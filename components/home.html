@@ -36,7 +36,10 @@
         linksText += links[i].textContent + ', ';
       }
       speak("Welcome to swiggy.");
-      speak("This Page has" + linksText);
+      speak("This Page has");
+      
+      speak(linksText);
+      
 
       // Start speech recognition
       window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -85,7 +88,7 @@
         console.log('Speech recognition not available');
       }
     });
-
+   
     fetch('footer.html')
       .then(response => response.text())
       .then(data => {
@@ -106,8 +109,8 @@
 <body>
   <header>
     <div>
-      <img class="logo" src="https://th.bing.com/th/id/OIP.e63NRTLEhKQ5u1I0fAV6sgAAAA?w=154&h=159&c=7&r=0&o=5&pid=1.7"
-        alt="Logo" />
+      <a href="../components/home.html"><img class="logo" src="https://th.bing.com/th/id/OIP.e63NRTLEhKQ5u1I0fAV6sgAAAA?w=154&h=159&c=7&r=0&o=5&pid=1.7"
+        alt="Logo" /></a>
     </div>
     <ul class="main-bar">
       <li class="li"><i class="fas fa-home"></i><a href="../components/Main/main.html" class="a">Home</a></li>

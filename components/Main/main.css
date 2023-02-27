@@ -1,5 +1,6 @@
 img{
     width: 270px;
+    border-radius: 15px;
     height: 250px;
 }
 .heading{
@@ -15,10 +16,19 @@ img{
     margin-bottom: 50px;
 }
 .restaurants{
-    padding: 6px;
-    box-shadow: 0.1px 3px 3px black;
+    padding-bottom: 6px;
+    padding-left: 5px;
+    padding-right: 2px;
+    box-shadow: 0.1px 4px 4px black;
+    border: 1px solid white;
+    border-radius: 15px;
+    width: 270px;
 }
 ul{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+}
+
+#time{
+    padding-left: 0px;
 }

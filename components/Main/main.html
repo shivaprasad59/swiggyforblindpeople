@@ -7,8 +7,7 @@
     <title>Home</title>
     <link rel="stylesheet" href="../Main/main.css">
     <link rel="stylesheet" href="../home.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <script>
+   <script>
         function speak(text) {
           const utterance = new SpeechSynthesisUtterance();
           utterance.text = text;
@@ -38,7 +37,8 @@
             linksText += links[i].textContent + ', ';
           }
           speak("Welcome to Restaurants Page.");
-          speak("Please select one Restaurant from the below Restaurants" + linksText);
+          speak("Please select one Restaurant from the below Restaurants");
+          speak(linksText);
     
           // Start speech recognition
           window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -55,8 +55,8 @@
                 case 'go to hyderabad spice.':
                   navigateToPage('HOME/Restaurants/hyderabadspice');
                   break;
-                case 'go to search.':
-                  navigateToPage('search');
+                case 'go to kritunga.':
+                  navigateToPage('HOME/Restaurants/kritunga');
                   break;
                 case 'go to offers.':
                   navigateToPage('offers');
@@ -89,13 +89,15 @@
         });
     
       </script>
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    
 </head>
 <body>
     
     <header>
         <div>
-          <img class="logo" src="https://th.bing.com/th/id/OIP.e63NRTLEhKQ5u1I0fAV6sgAAAA?w=154&h=159&c=7&r=0&o=5&pid=1.7"
-            alt="Logo" />
+          <a href="../components/home.html"><img class="logo" src="https://th.bing.com/th/id/OIP.e63NRTLEhKQ5u1I0fAV6sgAAAA?w=154&h=159&c=7&r=0&o=5&pid=1.7"
+            alt="Logo" /></a>
         </div>
         <ul class="main-bar">
           <li class="li"><i class="fas fa-home"></i><a href="../components/Main/main.html" class="a">Home</a></li>
@@ -113,11 +115,12 @@
                 <img src="../images/r1.jpeg" alt="Restaurant-1">
                 <br>
                 <div>
-                    <h3>Mehfil</h3>
-                    <p>Biryani,North Indian,Kebabs,chinese</p>
+                    <h3>Hyderabad chefs</h3>
+                    <p>Biryani,North Indian,Andhra Specials,Tandoori Starters</p>
                     <ul>
-                        <li>36mins</li>
-                        <li>300$ for two</li>
+                        <i class="fas fa-solid fa-star li1">3.9</i>
+                        <li id="time">36mins</li>
+                        <li> &#x20B9;300 for two</li>
                     </ul>
                 </div>
             </div>
@@ -126,10 +129,11 @@
                 <br>
                 <div>
                     <h3>Lucky Multicuisine</h3>
-                    <p>North Indian,Kebabs,chinese,Biryani</p>
+                    <p>Insian,Chinese,Tandoori Starters</p>
                     <ul>
-                        <li>32mins</li>
-                        <li>400$ for two</li>
+                        <i class="fas fa-solid fa-star li1">3.9</i>
+                        <li id="time">32mins</li>
+                        <li> &#x20B9;400 for two</li>
                     </ul>
                 </div>
             </div>
@@ -137,78 +141,83 @@
                 <img src="../images/r3.jpg" alt="Restaurant-1">
                 <br>
                 <div>
-                    <h3>Hyderabad Spice</h3>
-                    <p>Biryani,North Indianchinese</p>
+                    <h3>Paradise</h3>
+                    <p>Biryani,North Indian, Chinese</p>
                     <ul>
-                        <li>28mins</li>
-                        <li>300 for one</li>
+                        <i class="fas fa-solid fa-star li1">4.0</i>
+                        <li id="time">28mins</li>
+                        <li> &#x20B9;300 for one</li>
                     </ul>
                 </div>
             </div>
             <div class="restaurants">
-                <img src="../images/r1.jpeg" alt="Restaurant-1">
+                <img src="../images/r4.jpeg" alt="Restaurant-1">
                 <br>
                 <div>
-                    <h3>Mehfil</h3>
-                    <p>Biryani,North Indian,Kebabs,chinese</p>
+                    <h3>Chaitanya Court</h3>
+                    <p>South Indian,Chinese,North Indian</p>
                     <ul>
-                        <li>36mins</li>
-                        <li>300 for two</li>
+                        <i class="fas fa-solid fa-star li1">4.1</i>
+                        <li id="time">20 mins</li>
+                        <li> &#x20B9;220 for two</li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="row-2">
             <div class="restaurants">
-                <img src="../images/r1.jpeg" alt="Restaurant-1">
+                <img src="../images/r5.jpg" alt="Restaurant-1">
                 <br>
                 <div>
-                    <h3>Mehfil</h3>
+                    <h3>Santosh family dhaba</h3>
                     <p>Biryani,North Indian,Kebabs,chinese</p>
                     <ul>
-                        <li>36mins</li>
-                        <li>300$ for two</li>
+                        <i class="fas fa-solid fa-star li1">3.7</i>
+                        <li id="time">36mins</li>
+                        <li> &#x20B9;300 for two</li>
                     </ul>
                 </div>
             </div>
             <div class="restaurants">
-                <img src="../images/r2.jpg" alt="Restaurant-1">
+                <img src="../images/r8.jpeg" alt="Restaurant-1">
                 <br>
                 <div>
-                    <h3>Lucky Multicuisine</h3>
-                    <p>North Indian,Kebabs,chinese,Biryani</p>
+                    <h3>Arabian nights</h3>
+                    <p>Biryania,Sea food dishes,Shawarmas,Starters</p>
                     <ul>
-                        <li>32mins</li>
-                        <li>400$ for two</li>
+                      <i class="fas fa-solid fa-star li1">3.8</i>
+                        <li id="time">32mins</li>
+                        <li> &#x20B9;400 for two</li>
                     </ul>
                 </div>
             </div>
             <div class="restaurants">
-                <img src="../images/r3.jpg" alt="Restaurant-1">
+                <img src="../images/r9.jpeg" alt="Restaurant-1">
+                <br>
+                <div>
+                    <h3>Biryani Patnam</h3>
+                    <p>Biryani,South Indian,Chinese,Roasts & Naans</p>
+                    <ul>
+                      <i class="fas fa-solid fa-star li1">3.8</i>
+                        <li id="time">24mins</li>
+                        <li> &#x20B9;500 for one</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="restaurants">
+                <img src="../images/r11.jpeg" alt="Restaurant-1">
                 <br>
                 <div>
                     <h3>Hyderabad Spice</h3>
-                    <p>Biryani,North Indianchinese</p>
-                    <ul>
-                        <li>28mins</li>
-                        <li>300 for one</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="restaurants">
-                <img src="../images/r1.jpeg" alt="Restaurant-1">
-                <br>
-                <div>
-                    <h3>Mehfil</h3>
                     <p>Biryani,North Indian,Kebabs,chinese</p>
                     <ul>
-                        <li>36mins</li>
-                        <li>300 for two</li>
+                        <i class="fas fa-solid fa-star li1">3.9</i>
+                        <li id="time" class="li1">32mins</li>
+                        <li><i class="fas -sharp fa-solid fa-indian-rupee-sign"></i> &#x20B9;500 for two</li>
                     </ul>
                 </div>
             </div>
         </div>
-
     </div>
     <button id="start-recognition">Start Recognition</button>
     <div id="recognition-result"></div>
