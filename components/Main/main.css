@@ -1,0 +1,24 @@
+img{
+    width: 270px;
+    height: 250px;
+}
+.heading{
+    text-align: center;
+}
+.row-2{
+    display: flex;
+}
+.row1,.row-2,.row-3{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+.restaurants{
+    padding: 6px;
+    box-shadow: 0.1px 3px 3px black;
+}
+ul{
+    display: flex;
+    justify-content: space-around;
+}

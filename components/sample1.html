@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Speech Recognition Example</title>
+</head>
+<body>
+  <h1>Speech Recognition Example</h1>
+  <p>Click the button below and start speaking. Say the name of a page to navigate to that page.</p>
+  <button id="start-recognition">Start Recognition</button>
+  <div id="recognition-result"></div>
+
+  <script>
+    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+if ('SpeechRecognition' in window) {
+  const recognition = new window.SpeechRecognition();
+  const recognitionResult = document.querySelector('#recognition-result');
+
+  recognition.addEventListener('result', (event) => {
+    const transcript = event.results[0][0].transcript;
+    recognitionResult.textContent = transcript;
+
+    // Extract page name from speech input
+    const pageName = transcript.trim().toLowerCase();
+    console.log(pageName);
+    
+    // Construct URL for page based on page name
+    const pageUrl = `${window.location.origin}/${pageName}html`;
+    console.log(pageUrl);
+
+    // Navigate to page if page name is "sample" and page exists
+    if (pageName === "sample." && pageExists(pageUrl)) {
+      window.location.href = pageUrl;
+    } else {
+      alert(`Page ${pageName} not found`);
+    }
+  });
+
+  recognition.addEventListener('end', () => {
+    recognition.start();
+  });
+
+  document.querySelector('#start-recognition').addEventListener('click', () => {
+    recognition.start();
+  });
+} else {
+  console.log('Speech recognition not available');
+}
+
+async function pageExists(url) {
+  // Check if the URL exists by making a HEAD request to the URL
+  const response = await fetch(url, { method: 'HEAD' });
+  return response.status !== 404;
+}
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="../Main/main.css">
+    <link rel="stylesheet" href="../home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script>
+        function speak(text) {
+          const utterance = new SpeechSynthesisUtterance();
+          utterance.text = text;
+          window.speechSynthesis.speak(utterance);
+        }
+    
+        function navigateToPage(pageName) {
+          const pageUrl = `${window.location.origin}/components/${pageName}.html`;
+    
+          if (pageExists(pageUrl)) {
+            window.location.href = pageUrl;
+          } else {
+            speak("Not recognized speak again");
+          }
+        }
+    
+        async function pageExists(url) {
+          const response = await fetch(url, { method: 'HEAD' });
+          return response.status !== 404;
+        }
+    
+        window.addEventListener('DOMContentLoaded', () => {
+          // Speak out the links in the navigation bar
+          const links = document.querySelectorAll('h3');
+          let linksText = '';
+          for (let i = 0; i < links.length; i++) {
+            linksText += links[i].textContent + ', ';
+          }
+          speak("Welcome to Restaurants Page.");
+          speak("Please select one Restaurant from the below Restaurants" + linksText);
+    
+          // Start speech recognition
+          window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    
+          if ('SpeechRecognition' in window) {
+            const recognition = new window.SpeechRecognition();
+            const recognitionResult = document.querySelector('#recognition-result');
+    
+            recognition.addEventListener('result', (event) => {
+              const transcript = event.results[0][0].transcript.toLowerCase();
+              recognitionResult.textContent = transcript;
+              console.log(transcript);
+              switch (transcript) {
+                case 'go to hyderabad spice.':
+                  navigateToPage('HOME/Restaurants/hyderabadspice');
+                  break;
+                case 'go to search.':
+                  navigateToPage('search');
+                  break;
+                case 'go to offers.':
+                  navigateToPage('offers');
+                  break;
+                case 'go to insta mart.':
+                  navigateToPage('instamart');
+                  break;
+                case 'go to account.':
+                  navigateToPage('account');
+                  break;
+                case 'go to cart.':
+                  navigateToPage('cart');
+                  break;
+                default:
+                  speak("Invalid command.Can you Speak one more time");
+                  navigateToPage('Main/main');
+              }
+            });
+    
+            recognition.addEventListener('end', () => {
+              recognition.start();
+            });
+    
+            document.querySelector('#start-recognition').addEventListener('click', () => {
+              recognition.start();
+            });
+          } else {
+            console.log('Speech recognition not available');
+          }
+        });
+    
+      </script>
+</head>
+<body>
+    
+    <header>
+        <div>
+          <img class="logo" src="https://th.bing.com/th/id/OIP.e63NRTLEhKQ5u1I0fAV6sgAAAA?w=154&h=159&c=7&r=0&o=5&pid=1.7"
+            alt="Logo" />
+        </div>
+        <ul class="main-bar">
+          <li class="li"><i class="fas fa-home"></i><a href="../components/Main/main.html" class="a">Home</a></li>
+          <li class="li"><i class="fas fa-search"></i><a class="a" href="">Search</a></li>
+          <li class="li"><i class="fas fa-tags"></i><a class="a" href="">Offers</a></li>
+          <li class="li"><i class="fas fa-question-circle"></i><a class="a" href="">Instamart</a></li>
+          <li class="li"><i class="fas fa-user"></i><a class="a" href="">Account</a></li>
+          <li class="li"><i class="fa fa-sharp fa-solid fa-cart-plus"></i><a class="a" href="">Cart</a></li>
+        </ul>
+      </header>
+      <h2 class="heading">Restaurants</h2>
+    <div>
+        <div class="row1">
+            <div class="restaurants">
+                <img src="../images/r1.jpeg" alt="Restaurant-1">
+                <br>
+                <div>
+                    <h3>Mehfil</h3>
+                    <p>Biryani,North Indian,Kebabs,chinese</p>
+                    <ul>
+                        <li>36mins</li>
+                        <li>300$ for two</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="restaurants">
+                <img src="../images/r2.jpg" alt="Restaurant-1">
+                <br>
+                <div>
+                    <h3>Lucky Multicuisine</h3>
+                    <p>North Indian,Kebabs,chinese,Biryani</p>
+                    <ul>
+                        <li>32mins</li>
+                        <li>400$ for two</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="restaurants">
+                <img src="../images/r3.jpg" alt="Restaurant-1">
+                <br>
+                <div>
+                    <h3>Hyderabad Spice</h3>
+                    <p>Biryani,North Indianchinese</p>
+                    <ul>
+                        <li>28mins</li>
+                        <li>300 for one</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="restaurants">
+                <img src="../images/r1.jpeg" alt="Restaurant-1">
+                <br>
+                <div>
+                    <h3>Mehfil</h3>
+                    <p>Biryani,North Indian,Kebabs,chinese</p>
+                    <ul>
+                        <li>36mins</li>
+                        <li>300 for two</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row-2">
+            <div class="restaurants">
+                <img src="../images/r1.jpeg" alt="Restaurant-1">
+                <br>
+                <div>
+                    <h3>Mehfil</h3>
+                    <p>Biryani,North Indian,Kebabs,chinese</p>
+                    <ul>
+                        <li>36mins</li>
+                        <li>300$ for two</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="restaurants">
+                <img src="../images/r2.jpg" alt="Restaurant-1">
+                <br>
+                <div>
+                    <h3>Lucky Multicuisine</h3>
+                    <p>North Indian,Kebabs,chinese,Biryani</p>
+                    <ul>
+                        <li>32mins</li>
+                        <li>400$ for two</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="restaurants">
+                <img src="../images/r3.jpg" alt="Restaurant-1">
+                <br>
+                <div>
+                    <h3>Hyderabad Spice</h3>
+                    <p>Biryani,North Indianchinese</p>
+                    <ul>
+                        <li>28mins</li>
+                        <li>300 for one</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="restaurants">
+                <img src="../images/r1.jpeg" alt="Restaurant-1">
+                <br>
+                <div>
+                    <h3>Mehfil</h3>
+                    <p>Biryani,North Indian,Kebabs,chinese</p>
+                    <ul>
+                        <li>36mins</li>
+                        <li>300 for two</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <button id="start-recognition">Start Recognition</button>
+    <div id="recognition-result"></div>
+</body>
+</html>

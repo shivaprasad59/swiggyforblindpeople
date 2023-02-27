@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <script>
+    fetch('home.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('other-page').innerHTML = data;
+  });
+
+   </script>
+</head>
+<body>
+    <div id="other-page"></div>
+</body>
+</html>

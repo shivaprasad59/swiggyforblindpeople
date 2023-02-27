@@ -1,0 +1,45 @@
+.main-bar{
+    margin-top: 20px;
+    margin-left: 320px;
+    display: flex;
+    list-style: none;
+}
+i{
+    margin-right: 6px;
+}
+.li{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 50px;
+}
+.imgscarousel{
+    display: flex;
+}
+header{
+    margin-top: 15px;
+    display: flex;
+    box-shadow: 3px 4px 4px;
+    border-radius: 35px;
+    margin-bottom: 50px;
+}
+.logo{
+    width: 80px;
+    height: 65px;
+    border: 1px solid white;
+    border-radius: 20px;
+    margin-left: 10px;
+}
+.carousel-item{
+    margin-left: 100px;
+    margin-right: 100px;
+    text-align: center;
+}
+.d-block{
+    width: 550px;
+    height: 400px;
+   
+}
+.a{
+    text-decoration: none;
+    color: black;
+}

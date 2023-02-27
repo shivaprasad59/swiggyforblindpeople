@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sample Website for Visually Impaired Users</title>
+  <script>
+    function speak(text) {
+      const utterance = new SpeechSynthesisUtterance();
+      utterance.text = text;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function navigateToPage(pageName) {
+      const pageUrl = `${window.location.origin}/${pageName}.html`;
+
+      if (pageExists(pageUrl)) {
+        window.location.href = pageUrl;
+      } else {
+        alert(`Page ${pageName} not found`);
+      }
+    }
+
+    async function pageExists(url) {
+      const response = await fetch(url, { method: 'HEAD' });
+      return response.status !== 404;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      // Speak out the links in the navigation bar
+      const links = document.querySelectorAll('header ul li');
+      let linksText = '';
+      for (let i = 0; i < links.length; i++) {
+        linksText += links[i].textContent + ', ';
+      }
+      speak('Navigation links are ' + linksText);
+
+      // Start speech recognition
+      window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+      if ('SpeechRecognition' in window) {
+        const recognition = new window.SpeechRecognition();
+        const recognitionResult = document.querySelector('#recognition-result');
+
+        recognition.addEventListener('result', (event) => {
+          const transcript = event.results[0][0].transcript.toLowerCase();
+          recognitionResult.textContent = transcript;
+
+          switch (transcript) {
+            case 'home.':
+              navigateToPage('home');
+              break;
+            case 'offers':
+              navigateToPage('offers');
+              break;
+            case 'orders':
+              navigateToPage('orders');
+              break;
+            case 'account':
+              navigateToPage('account');
+              break;
+            case 'cart':
+              navigateToPage('cart');
+              break;
+            default:
+              alert('Invalid command. Please try again.');
+          }
+        });
+
+        recognition.addEventListener('end', () => {
+          recognition.start();
+        });
+
+        document.querySelector('#start-recognition').addEventListener('click', () => {
+          recognition.start();
+        });
+      } else {
+        console.log('Speech recognition not available');
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <header>
+    <ul>
+      <li>Home</li>
+      <li>Offers</li>
+      <li>Orders</li>
+      <li>Account</li>
+      <li>Cart</li>
+    </ul>
+  </header>
+</body>
+</html>
+<button id="start-recognition">Start Recognition</button>
+    <div id="recognition-result"></div>

@@ -1,0 +1,35 @@
+.footerbody{
+    margin-top: 20px;
+    background-color: black;
+    display: block;
+    padding-bottom: 20px;
+}
+.footerl2,.footerl3{
+    font-size: 15px;
+    color: white;
+    margin-left: 200px;
+}
+.footeritems{
+    display: flex;
+}
+ul{
+    list-style: none;
+}
+.footerl1{
+    font-size: 15px;
+}
+.footerh1,.footerl1{
+    display: flex;
+    color:white;
+    margin-left: 100px;
+}
+.footerh2,.footerh3{
+    display: flex;
+    color:white;
+    margin-left: 250px;
+}
+.footerheadings{
+    display: flex;
+    margin-top: 50px;
+    padding-top: 50px;
+}
